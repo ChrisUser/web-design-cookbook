@@ -66,6 +66,8 @@ You can limit the width of an element by specifying the number of characters all
 
 ### Aspect ratio with fallback
 
+Generate aspect ratio code [here](https://ratiobuddy.com/)
+
 [Full article](https://dev.to/nikolab/css-aspect-ratio-with-a-fallback-for-old-browsers-3eon)
 
 ```css
