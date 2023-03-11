@@ -110,3 +110,15 @@ That's one of the most performant CSS naming convention.
   ...;
 }
 ```
+
+### Scrollbar space automatic management
+
+[MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/scrollbar-gutter)
+
+You can add a default right space for the scrollbar even when the scroll is not active nor visible with:
+
+```css
+.container {
+  scrollbar-gutter: stable;
+}
+```
