@@ -122,3 +122,19 @@ You can add a default right space for the scrollbar even when the scroll is not 
   scrollbar-gutter: stable;
 }
 ```
+
+### Use FOUT font rule
+
+Add `font-display: swap` to a @font-face block to opt-in to FOUT on browsers that support it.
+
+[Full article](https://css-tricks.com/really-dislike-fout-font-display-optional-might-jam/)
+
+```css
+@font-face {
+  font-family: Roboto;
+  src: url(/path/to/fonts/Roboto.woff) format("woff");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+```
