@@ -148,3 +148,24 @@ The `grid-auto-flow` property controls how the auto-placement algorithm works, s
 ```css
 grid-auto-flow: row | column | dense | row dense | column dense;
 ```
+
+### Flex-grow 9999 Hack
+
+[Full article](https://www.joren.co/flex-grow-9999-hack/)
+
+```css
+.container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.item-a {
+  flex-grow: 1;
+}
+
+.item-b {
+  flex-grow: 9999;
+  flex-basis: 20em;
+}
+```
