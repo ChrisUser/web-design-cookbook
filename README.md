@@ -138,3 +138,13 @@ Add `font-display: swap` to a @font-face block to opt-in to FOUT on browsers tha
   font-display: swap;
 }
 ```
+
+### grid auto-placements
+
+The `grid-auto-flow` property controls how the auto-placement algorithm works, specifying exactly how auto-placed items get flowed into the grid.
+
+[MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/grid-auto-flow)
+
+```css
+grid-auto-flow: row | column | dense | row dense | column dense;
+```
