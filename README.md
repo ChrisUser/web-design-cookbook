@@ -40,7 +40,7 @@ That's one of the most performant CSS naming convention.
 
 Add `font-display: swap` to a @font-face block to opt-in to FOUT on browsers that support it.
 
-[Full article](https://css-tricks.com/really-dislike-fout-font-display-optional-might-jam/)
+- [Full article](https://css-tricks.com/really-dislike-fout-font-display-optional-might-jam/)
 
 ```css
 @font-face {
@@ -53,13 +53,42 @@ Add `font-display: swap` to a @font-face block to opt-in to FOUT on browsers tha
 }
 ```
 
+### 3. Css selectors efficiency
+
+The following is an ordered list of some CSS selectors from fastest to slowest (heaviest).
+
+Keep an eye on it when trying to improve code performance.
+
+```css
+/* 1. */  .foo-class {}
+/* 2. */  div {}
+/* 3. */  header + main {}
+/* 4. */  ul > li {}
+/* 5. */  ul li
+/* 6. */  *
+/* 7. */  a[href="https://some-example.com"]
+/* 8. */  a:visited
+```
+
+### 4. will-change animations optimization
+
+The `will-change` property optimizes animations by letting the browser know which properties and elements are just about to be manipulated, potentially increasing the performance of that particular operation.
+
+- [MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/will-change)
+
+```css
+.element {
+  will-change: transform, opacity;
+}
+```
+
 ## Fallbacks
 
 ### 1. Support fallback
 
 The `@support()` feature query can be used to handle CSS properties fallbacks.
 
-[MDN guide](https://developer.mozilla.org/en-US/docs/Web/CSS/@supports)
+- [MDN guide](https://developer.mozilla.org/en-US/docs/Web/CSS/@supports)
 
 ```css
 .box > * {
@@ -93,7 +122,7 @@ The `@support()` feature query can be used to handle CSS properties fallbacks.
 
 Generate aspect ratio code [here](https://ratiobuddy.com/).
 
-[Full article](https://dev.to/nikolab/css-aspect-ratio-with-a-fallback-for-old-browsers-3eon)
+- [Full article](https://dev.to/nikolab/css-aspect-ratio-with-a-fallback-for-old-browsers-3eon)
 
 ```css
 .box {
@@ -118,7 +147,7 @@ Generate aspect ratio code [here](https://ratiobuddy.com/).
 
 Every direct sibling child element of `.stack` has margin-block-start added to it. The `.flow` uses custom variables and a fallback value.
 
-[Full article](https://andy-bell.co.uk/my-favourite-3-lines-of-css/?utm_source=tldrnewsletter)
+- [Full article](https://andy-bell.co.uk/my-favourite-3-lines-of-css/?utm_source=tldrnewsletter)
 
 **The stack**
 
@@ -150,7 +179,7 @@ The width of an element can be limited by specifying the number of characters al
 
 A default right space for the scrollbar can be added to the container even when the scroll is not active nor visible.
 
-[MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/scrollbar-gutter)
+- [MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/scrollbar-gutter)
 
 ```css
 .container {
@@ -162,7 +191,7 @@ A default right space for the scrollbar can be added to the container even when 
 
 The `grid-auto-flow` property controls how the auto-placement algorithm works, specifying exactly how auto-placed items get flowed into the grid.
 
-[MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/grid-auto-flow)
+- [MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/grid-auto-flow)
 
 ```css
 grid-auto-flow: row | column | dense | row dense | column dense;
@@ -172,7 +201,7 @@ grid-auto-flow: row | column | dense | row dense | column dense;
 
 Makes a flex item behave like it has **two flex grow** values.
 
-[Full article](https://www.joren.co/flex-grow-9999-hack/)
+- [Full article](https://www.joren.co/flex-grow-9999-hack/)
 
 ```css
 .container {
@@ -190,6 +219,25 @@ Makes a flex item behave like it has **two flex grow** values.
   flex-basis: 20em;
 }
 ```
+
+### 8. User prefer reduced motion
+
+This media feature is used to detect if a user has enabled a setting on their device to minimize the amount of **non-essential motion**.
+
+- [MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-reduced-motion)
+
+```css
+@media (prefers-reduced-motion: reduce) {
+  .animated-element {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+```
+
+> **Note**: Remember that [no motion isn’t always prefers-reduced-motion](https://css-tricks.com/nuking-motion-with-prefers-reduced-motion/).
 
 ## Contribute
 
