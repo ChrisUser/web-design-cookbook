@@ -4,11 +4,49 @@
 
 ## Table of Contents
 
+1. [Best practices](#bestpractices)
 1. [Performance](#performance)
 1. [Fallbacks](#fallbacks)
 1. [Layout](#layout)
 1. [Contribute](#contribute)
 1. [License](#license)
+
+## Best practices
+
+### 1. `line-height` management
+
+Generally speaking: for a paragraph a good `line-height` ranges between 1.5 and 1.7 for most fonts.
+
+- [Digital Ocean](https://www.digitalocean.com/community/tutorials/css-line-height)
+
+```css
+.well-readable-paragraph {
+  /* ... */
+  font-size: 16px;
+  line-height: 1.5;
+}
+```
+
+> [Avoid unexpected results](https://developer.mozilla.org/en-US/docs/Web/CSS/line-height#prefer_unitless_numbers_for_line-height_values) by using unitless line-height.
+
+### 2. User prefer reduced motion
+
+This media feature is used to detect if a user has enabled a setting on their device to minimize the amount of **non-essential motion**.
+
+- [MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-reduced-motion)
+
+```css
+@media (prefers-reduced-motion: reduce) {
+  .animated-element {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+```
+
+> **Note**: Remember that [no motion isn’t always prefers-reduced-motion](https://css-tricks.com/nuking-motion-with-prefers-reduced-motion/).
 
 ## Performance
 
@@ -143,7 +181,7 @@ Generate aspect ratio code [here](https://ratiobuddy.com/).
 
 ## Layout
 
-### 3. The stack vs flow
+### 1. The stack vs flow
 
 Every direct sibling child element of `.stack` has margin-block-start added to it. The `.flow` uses custom variables and a fallback value.
 
@@ -165,7 +203,7 @@ Every direct sibling child element of `.stack` has margin-block-start added to i
 }
 ```
 
-### 4. Paragraph characters width
+### 2. Paragraph characters width
 
 The width of an element can be limited by specifying the number of characters allowed.
 
@@ -175,7 +213,7 @@ The width of an element can be limited by specifying the number of characters al
 }
 ```
 
-### 5. Scrollbar space automatic management
+### 3. Scrollbar space automatic management
 
 A default right space for the scrollbar can be added to the container even when the scroll is not active nor visible.
 
@@ -187,7 +225,7 @@ A default right space for the scrollbar can be added to the container even when 
 }
 ```
 
-### 6. grid auto-placements
+### 4. grid auto-placements
 
 The `grid-auto-flow` property controls how the auto-placement algorithm works, specifying exactly how auto-placed items get flowed into the grid.
 
@@ -197,7 +235,7 @@ The `grid-auto-flow` property controls how the auto-placement algorithm works, s
 grid-auto-flow: row | column | dense | row dense | column dense;
 ```
 
-### 7. Flex-grow 9999 Hack
+### 5. Flex-grow 9999 Hack
 
 Makes a flex item behave like it has **two flex grow** values.
 
@@ -220,24 +258,37 @@ Makes a flex item behave like it has **two flex grow** values.
 }
 ```
 
-### 8. User prefer reduced motion
+### 6. Inner border radius trick
 
-This media feature is used to detect if a user has enabled a setting on their device to minimize the amount of **non-essential motion**.
+To calculate the correct border radius of an inner div based on its parent's radius use the following formula.
 
-- [MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-reduced-motion)
+- [This one is by me](https://github.com/ChrisUser)
 
-```css
-@media (prefers-reduced-motion: reduce) {
-  .animated-element {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-    scroll-behavior: auto !important;
-  }
-}
+```html
+<div class="parent-block">
+  <div class="child-block" />
+</div>
 ```
 
-> **Note**: Remember that [no motion isn’t always prefers-reduced-motion](https://css-tricks.com/nuking-motion-with-prefers-reduced-motion/).
+```css
+.parent-block {
+  /* ... */
+  border-radius: var(--main-border-radius);
+  padding: var(--main-padding);
+}
+
+.child-block {
+  /* ... */
+  /* 
+  * Biggest value between the parent's radius minus its padding and
+  * half the minimum value between the two.
+  */
+  border-radius: max(
+    calc(var(--main-border-radius) - var(--main-padding)),
+    calc(min(var(--main-border-radius), var(--main-padding)) * 0.5)
+  );
+}
+```
 
 ## Contribute
 
