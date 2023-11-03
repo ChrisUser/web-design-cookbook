@@ -279,7 +279,8 @@ To calculate the correct border radius of an inner div based on its parent's rad
 
 .child-block {
   /* ... */
-  /* 
+  /*
+  * @author ChrisUser - Cristiano Raimondi
   * Biggest value between the parent's radius minus its padding and
   * half the minimum value between the two.
   */
