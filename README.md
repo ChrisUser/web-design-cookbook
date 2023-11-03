@@ -4,7 +4,7 @@
 
 ## Table of Contents
 
-1. [Best practices](#bestpractices)
+1. [Best practices](#best-practices)
 1. [Performance](#performance)
 1. [Fallbacks](#fallbacks)
 1. [Layout](#layout)
