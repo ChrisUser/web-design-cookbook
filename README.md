@@ -262,7 +262,7 @@ Makes a flex item behave like it has **two flex grow** values.
 
 To calculate the correct border radius of an inner div based on its parent's radius use the following formula.
 
-- [This one is by me](https://github.com/ChrisUser)
+- [Personal snippet](https://github.com/ChrisUser)
 
 ```html
 <div class="parent-block">
@@ -279,6 +279,7 @@ To calculate the correct border radius of an inner div based on its parent's rad
 
 .child-block {
   /* ... */
+
   /*
   * @author ChrisUser - Cristiano Raimondi
   * Biggest value between the parent's radius minus its padding and
